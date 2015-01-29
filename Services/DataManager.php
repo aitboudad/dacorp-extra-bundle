@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Dacorp\ExtraBundle\Services;
 
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
@@ -40,7 +39,7 @@ class DataManager
     /**
      * Container
      * @var type
-     * TODO : remove container if possible, see CHD-1
+     *           TODO : remove container if possible, see CHD-1
      */
     protected $container;
 
@@ -73,8 +72,8 @@ class DataManager
         $this->saveChanges();
     }
 
-    public function getUser() {
+    public function getUser()
+    {
         return $this->container->get('security.context')->getToken()->getUser();
     }
-
 }

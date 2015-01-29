@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Dacorp\ExtraBundle\Twig;
 
 use Twig_Extension;
@@ -21,14 +20,14 @@ class UserWidgets extends Twig_Extension
 
     /**
      * Logger
-     * @var type 
+     * @var type
      */
     protected $logger;
     protected $themeAttributes;
 
     /**
      * Container
-     * @var type 
+     * @var type
      */
     private $container;
 
@@ -47,17 +46,14 @@ class UserWidgets extends Twig_Extension
 
     public function getGlobals()
     {
-  
     }
 
     public function genUserCard()
     {
-        
     }
 
     public function getName()
     {
         return 'dacorp_userwidgets';
     }
-
 }

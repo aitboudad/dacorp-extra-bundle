@@ -9,14 +9,10 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Dacorp\ExtraBundle\Services;
 
 use Dacorp\ExtraBundle\Entity\DacorpMedia;
-use Dacorp\ExtraBundle\Entity\Item;
 use Dacorp\ExtraBundle\Entity\User;
-use Dacorp\ExtraBundle\Services\FileManager;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\Container;
 use Doctrine\Common\Collections\Criteria;
@@ -82,9 +78,10 @@ class DacorpMediaManager
         //$type=($salt)?$salt.$type:$type;
         $editId = $this->fileManager->getEditId($seedId, $mediaId);
         $existingFiles = $this->fileManager->getExistingFiles($editId);
+
         return array(
             'editId' => $editId,
-            'existingFiles' => $existingFiles);
+            'existingFiles' => $existingFiles, );
     }
 
     public function feedFiles($editId)
@@ -125,19 +122,19 @@ class DacorpMediaManager
     /**
      * manageDacorpMediasForContent : manage (create and remove) dacorpmedias for a $parentContent of type Content
      * @param mixed $parentContent
-     * @param type $editId
+     * @param type  $editId
      * @param array $newAttachmentList
      * @deprecated to be remove in next iterations for some projects
      */
     public function manageSimpleDacorpMedia($parentContent, $editId, $newEditId, $filename, $parentType = 'picture')
     {
-        echo $editId . ", " . $newEditId;
+        echo $editId.", ".$newEditId;
         $this->logger->info('Managing DacorpMedia');
         if ($filename != null) {
             /* @var $media DacorpMedia */
             $this->em->flush();
 
-            $this->logger->info('add media:' . $filename);
+            $this->logger->info('add media:'.$filename);
 
             $dacorpMedia = new $this->mediaClass();
             if ($this->container->get('security.context')->getToken() != null && $this->container->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
@@ -159,7 +156,6 @@ class DacorpMediaManager
         }
         $this->fileManager->saveFiles($editId, $newEditId);
     }
-
 
     protected function daEncode($data)
     {
@@ -196,17 +192,16 @@ class DacorpMediaManager
         /* @var $existingMedia DacorpMedia */
         $existingMedia = $this->getMediaFor($parentContent, $parentType);
         if ($existingMedia != null) {
-            if ($oneFileName===null){
+            if ($oneFileName === null) {
                 $this->deleteMedia($parentContent, $existingMedia, $parentType);
-                $newMedia=null;
-            }
-            elseif ($existingMedia->getFilename() != $oneFileName) {
+                $newMedia = null;
+            } elseif ($existingMedia->getFilename() != $oneFileName) {
                 //we change it del + add
                 $this->deleteMedia($parentContent, $existingMedia, $parentType);
                 $newMedia = $this->addMedia($parentContent, $newEditId, $oneFileName, $parentType);
             } else {
                 //image is same, do nothing
-                $newMedia=$existingMedia;
+                $newMedia = $existingMedia;
             }
         } else {
             $newMedia = $this->addMedia($parentContent, $newEditId, $oneFileName, $parentType);
@@ -214,8 +209,8 @@ class DacorpMediaManager
 
         // ask filemanager to delete deleted files
         $this->fileManager->saveFiles($editId, $newEditId);
-        return $newMedia;
 
+        return $newMedia;
     }
 
     public function manageMultipleMediaFor($parentContent, $editId, $itemId, $oneFileName, $userId, $parentType)
@@ -245,7 +240,7 @@ class DacorpMediaManager
                     $newMedia = $this->addMedia($parentContent, $newEditId, $fileName, $parentType);
                 }
             } else {
-                echo "<p>we add " . $fileName . "</p>";
+                echo "<p>we add ".$fileName."</p>";
                 $this->addMedia($parentContent, $newEditId, $fileName, $parentType);
             }
         }
@@ -259,17 +254,16 @@ class DacorpMediaManager
         }
 
         print_r($arrayOfExistingMedia);
-        echo "number of listOfExistingMedia:" . count($arrayOfExistingMedia);
+        echo "number of listOfExistingMedia:".count($arrayOfExistingMedia);
 
         print_r($listOfFileNames);
-        echo "number of listOfFileNames:" . count($listOfFileNames);
+        echo "number of listOfFileNames:".count($listOfFileNames);
 
         foreach (array_diff($arrayOfExistingMedia, $listOfFileNames) as $fileToDelete) {
             $this->deleteMedia($parentContent, $fileToDelete, $parentType);
         }
         // delete deleted files
         $this->fileManager->saveFiles($editId, $newEditId);
-
     }
 
     /**
@@ -277,7 +271,6 @@ class DacorpMediaManager
      * @param $parentContent
      * @return mixed
      */
-
     public function getMediaFor($parentContent, $mediaType)
     {
         switch ($mediaType) {
@@ -296,8 +289,7 @@ class DacorpMediaManager
         /* @var $newMedia DacorpMedia */
         $newMedia = new $this->mediaClass();
         //$newMedia->
-        $this->logger->info('add media:' . $fileName);
-
+        $this->logger->info('add media:'.$fileName);
 
         $mediaKey = $this->fileManager->getMediaKey($newEditId);
 
@@ -310,13 +302,13 @@ class DacorpMediaManager
         $this->linkMediaToParent($parentContent, $newMedia, $parentType);
 
         $this->em->flush();
+
         return $newMedia;
     }
 
-
     public function deleteMedia($parentContent, $fileName, $mediaType)
     {
-        $media = $this->em->getRepository('DacorpExtraBundle:' . $mediaType)->findOneBy(array('filename' => $fileName));
+        $media = $this->em->getRepository('DacorpExtraBundle:'.$mediaType)->findOneBy(array('filename' => $fileName));
         switch ($mediaType) {
             case 'DacorpMedia':
                 /* @var $parentContent User */
@@ -327,4 +319,3 @@ class DacorpMediaManager
         $this->em->flush();
     }
 }
-

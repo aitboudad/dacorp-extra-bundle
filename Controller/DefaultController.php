@@ -15,14 +15,12 @@ use Dacorp\ExtraBundle\DacorpExtraEvents;
 use Dacorp\ExtraBundle\Event\LangPreferenceEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Default controller for standard services.
  *
  * @author jmeyo Jean-Christophe Meillaud
  */
-
 class DefaultController extends Controller
 {
     public function indexAction()
@@ -42,17 +40,17 @@ class DefaultController extends Controller
         $CSRFToken = $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate');
 
         return $this->render('DacorpExtraBundle:User:register.html.twig', array(
-                'csrf_token' => $CSRFToken
+                'csrf_token' => $CSRFToken,
             )
         );
     }
 
-    public function switchLanguageAction(Request $request,$newlang)
+    public function switchLanguageAction(Request $request, $newlang)
     {
         $event = new LangPreferenceEvent($newlang);
         $securityContext = $this->get('security.context');
         if ($securityContext->getToken() != null && $securityContext->isGranted('ROLE_AUTHENTICATED')) {
-        $this->get('event_dispatcher')->dispatch(DacorpExtraEvents::AUTHENTICATED_USER_CHANGE_LANG, $event);
+            $this->get('event_dispatcher')->dispatch(DacorpExtraEvents::AUTHENTICATED_USER_CHANGE_LANG, $event);
         }
         $request->attributes->set('_locale', $newlang);
         $this->get('session')->set('_locale', $newlang);
@@ -64,5 +62,4 @@ class DefaultController extends Controller
             return $this->redirect('/');
         }
     }
-
 }

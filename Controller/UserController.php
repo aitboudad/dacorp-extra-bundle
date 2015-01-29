@@ -41,12 +41,13 @@ class UserController extends Controller
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
         $em = $this->getDoctrine()->getManager();
-        if ($user instanceof DacorpUser)
+        if ($user instanceof DacorpUser) {
             $chosenAvatarFilename = ($user->getCurrentAvatar()) ? $em->getRepository('DacorpExtraBundle:DacorpMedia')->find($user->getCurrentAvatar())->getFilename() : null;
+        }
 
         return $this->render('DacorpExtraBundle:User:showOwnProfile.html.twig', array(
             'user' => $user,
-            'avatar' => $chosenAvatarFilename
+            'avatar' => $chosenAvatarFilename,
         ));
     }
 
@@ -57,12 +58,13 @@ class UserController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        if ($user instanceof DacorpUser)
+        if ($user instanceof DacorpUser) {
             $chosenAvatarFilename = ($user->getCurrentAvatar()) ? $em->getRepository('DacorpExtraBundle:DacorpMedia')->find($user->getCurrentAvatar())->getFilename() : null;
+        }
 
         return $this->render('DacorpExtraBundle:User:showUserProfile.html.twig', array(
             'user' => $user,
-            'avatar' => $chosenAvatarFilename
+            'avatar' => $chosenAvatarFilename,
         ));
     }
 
@@ -75,15 +77,13 @@ class UserController extends Controller
 
         $form = $this->createForm(new UserFormType(), $user);
 
-
         $form->handleRequest($request);
         if ($form->isValid()) {
-           //not implemented
+            //not implemented
             return $this->redirect($this->generateUrl('show_own_profile'));
         } else {
             $this->get('session')->getFlashBag()->add('warning', $this->get('translator')->trans('flash.message.form-invalid'));
         }
-
 
         return $this->render('DacorpExtraBundle:User:edit-user.html.twig', array(
             'form' => $form->createView(),
@@ -92,7 +92,7 @@ class UserController extends Controller
             'existingFiles' => array('TBD'),
             'selectable' => true,
             'isNew' => false,
-            'chosenAvatar' => $user->getCurrentAvatar()
+            'chosenAvatar' => $user->getCurrentAvatar(),
         ));
     }
 
@@ -109,10 +109,8 @@ class UserController extends Controller
         $csrfToken = $this->container->get('form.csrf_provider')->generateCsrfToken('authenticate');
 
         return $this->render('DacorpExtraBundle:User:register.html.twig', array(
-                'csrf_token' => $csrfToken
+                'csrf_token' => $csrfToken,
             )
         );
     }
-
-
 }

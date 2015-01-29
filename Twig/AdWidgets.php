@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Dacorp\ExtraBundle\Twig;
 
 class AdWidgets extends \Twig_Extension
@@ -35,7 +34,7 @@ class AdWidgets extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'adWidgets' => new \Twig_Function_Method($this, 'getAdWidgets', array('is_safe' => array('html')))
+            'adWidgets' => new \Twig_Function_Method($this, 'getAdWidgets', array('is_safe' => array('html'))),
         );
     }
 
@@ -43,7 +42,4 @@ class AdWidgets extends \Twig_Extension
     {
         return $this->container->get('dacorp.adHelper')->getAdSense($parameters);
     }
-
 }
-
-?>

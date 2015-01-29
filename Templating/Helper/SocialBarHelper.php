@@ -23,7 +23,6 @@ class SocialBarHelper extends Helper
         $this->templating  = $templating;
     }
 
-
     public function socialButtons($parameters)
     {
         return $this->templating->render('DacorpExtraBundle:Widgets:socialButtons.html.twig', $parameters);

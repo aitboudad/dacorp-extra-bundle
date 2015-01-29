@@ -65,8 +65,6 @@ class Address
      */
     protected $state;
 
-
-
     /**
      * Get addressId
      *

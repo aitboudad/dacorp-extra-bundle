@@ -62,7 +62,6 @@ class UserRole implements RoleInterface
      */
     protected $role;
 
-
     /**
      * Get schoolMemberRoleId
      *

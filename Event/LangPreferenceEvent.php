@@ -2,7 +2,6 @@
 
 namespace Dacorp\ExtraBundle\Event;
 
-use Aaa\Bundle\CoreBundle\Entity\AsUser;
 use Symfony\Component\EventDispatcher\Event;
 
 class LangPreferenceEvent extends Event
@@ -30,6 +29,4 @@ class LangPreferenceEvent extends Event
     {
         $this->preferredLang = $newLang;
     }
-
-
 }

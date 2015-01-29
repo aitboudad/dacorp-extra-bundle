@@ -27,8 +27,8 @@ class SearchFormType extends AbstractType implements NavbarFormInterface
                 'attr' => array(
                     'placeholder' => "search",
                     'class' => "input-medium search-query",
-                    'pull' => 'pull-right'
-                )
+                    'pull' => 'pull-right',
+                ),
             ))
         ;
     }
@@ -45,5 +45,4 @@ class SearchFormType extends AbstractType implements NavbarFormInterface
     {
         return "homepage"; # return here the name of the route the form should point to
     }
-
 }

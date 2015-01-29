@@ -14,8 +14,6 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
-use Dacorp\ExtraBundle\Entity\DacorpMedia;
-use Dacorp\ExtraBundle\Entity\UserStat;
 
 /**
  * @ORM\Entity
@@ -116,12 +114,12 @@ class User extends BaseUser
      *
      * @ORM\Column(name="user_reputation", type="integer", nullable=true)
      */
-    private $reputation=1;
-    
+    private $reputation = 1;
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -131,20 +129,20 @@ class User extends BaseUser
     /**
      * Set firstname
      *
-     * @param string $firstname
+     * @param  string $firstname
      * @return User
      */
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
-    
+
         return $this;
     }
 
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
@@ -154,20 +152,20 @@ class User extends BaseUser
     /**
      * Set birthdate
      *
-     * @param \DateTime $birthdate
+     * @param  \DateTime $birthdate
      * @return User
      */
     public function setBirthdate($birthdate)
     {
         $this->birthdate = $birthdate;
-    
+
         return $this;
     }
 
     /**
      * Get birthdate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getBirthdate()
     {
@@ -177,20 +175,20 @@ class User extends BaseUser
     /**
      * Set lastname
      *
-     * @param string $lastname
+     * @param  string $lastname
      * @return User
      */
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
-    
+
         return $this;
     }
 
     /**
      * Get lastname
      *
-     * @return string 
+     * @return string
      */
     public function getLastname()
     {
@@ -200,20 +198,20 @@ class User extends BaseUser
     /**
      * Set nbVoteUp
      *
-     * @param integer $nbVoteUp
+     * @param  integer $nbVoteUp
      * @return User
      */
     public function setNbVoteUp($nbVoteUp)
     {
         $this->nbVoteUp = $nbVoteUp;
-    
+
         return $this;
     }
 
     /**
      * Get nbVoteUp
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbVoteUp()
     {
@@ -223,20 +221,20 @@ class User extends BaseUser
     /**
      * Set nbVoteDown
      *
-     * @param integer $nbVoteDown
+     * @param  integer $nbVoteDown
      * @return User
      */
     public function setNbVoteDown($nbVoteDown)
     {
         $this->nbVoteDown = $nbVoteDown;
-    
+
         return $this;
     }
 
     /**
      * Get nbVoteDown
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbVoteDown()
     {
@@ -246,20 +244,20 @@ class User extends BaseUser
     /**
      * Set nbRating
      *
-     * @param integer $nbRating
+     * @param  integer $nbRating
      * @return User
      */
     public function setNbRating($nbRating)
     {
         $this->nbRating = $nbRating;
-    
+
         return $this;
     }
 
     /**
      * Get nbRating
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbRating()
     {
@@ -269,20 +267,20 @@ class User extends BaseUser
     /**
      * Set nbComment
      *
-     * @param integer $nbComment
+     * @param  integer $nbComment
      * @return User
      */
     public function setNbComment($nbComment)
     {
         $this->nbComment = $nbComment;
-    
+
         return $this;
     }
 
     /**
      * Get nbComment
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbComment()
     {
@@ -292,20 +290,20 @@ class User extends BaseUser
     /**
      * Set nbPictures
      *
-     * @param integer $nbPictures
+     * @param  integer $nbPictures
      * @return User
      */
     public function setNbPictures($nbPictures)
     {
         $this->nbPictures = $nbPictures;
-    
+
         return $this;
     }
 
     /**
      * Get nbPictures
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbPictures()
     {
@@ -315,20 +313,20 @@ class User extends BaseUser
     /**
      * Set address
      *
-     * @param \Dacorp\ExtraBundle\Entity\Address $address
+     * @param  \Dacorp\ExtraBundle\Entity\Address $address
      * @return User
      */
     public function setAddress(\Dacorp\ExtraBundle\Entity\Address $address = null)
     {
         $this->address = $address;
-    
+
         return $this;
     }
 
     /**
      * Get address
      *
-     * @return \Dacorp\ExtraBundle\Entity\Address 
+     * @return \Dacorp\ExtraBundle\Entity\Address
      */
     public function getAddress()
     {
@@ -338,20 +336,20 @@ class User extends BaseUser
     /**
      * Set userRole
      *
-     * @param \Dacorp\ExtraBundle\Entity\UserRole $userRole
+     * @param  \Dacorp\ExtraBundle\Entity\UserRole $userRole
      * @return User
      */
     public function setUserRole(\Dacorp\ExtraBundle\Entity\UserRole $userRole = null)
     {
         $this->userRole = $userRole;
-    
+
         return $this;
     }
 
     /**
      * Get userRole
      *
-     * @return \Dacorp\ExtraBundle\Entity\UserRole 
+     * @return \Dacorp\ExtraBundle\Entity\UserRole
      */
     public function getUserRole()
     {
@@ -361,20 +359,20 @@ class User extends BaseUser
     /**
      * Set currentAvatar
      *
-     * @param \Dacorp\ExtraBundle\Entity\DacorpMedia $currentAvatar
+     * @param  \Dacorp\ExtraBundle\Entity\DacorpMedia $currentAvatar
      * @return User
      */
     public function setCurrentAvatar(\Dacorp\ExtraBundle\Entity\DacorpMedia $currentAvatar = null)
     {
         $this->currentAvatar = $currentAvatar;
-    
+
         return $this;
     }
 
     /**
      * Get currentAvatar
      *
-     * @return \Dacorp\ExtraBundle\Entity\DacorpMedia 
+     * @return \Dacorp\ExtraBundle\Entity\DacorpMedia
      */
     public function getCurrentAvatar()
     {
@@ -384,20 +382,20 @@ class User extends BaseUser
     /**
      * Set userStat
      *
-     * @param \Dacorp\ExtraBundle\Entity\UserStat $userStat
+     * @param  \Dacorp\ExtraBundle\Entity\UserStat $userStat
      * @return User
      */
     public function setUserStat(\Dacorp\ExtraBundle\Entity\UserStat $userStat = null)
     {
         $this->userStat = $userStat;
-    
+
         return $this;
     }
 
     /**
      * Get userStat
      *
-     * @return \Dacorp\ExtraBundle\Entity\UserStat 
+     * @return \Dacorp\ExtraBundle\Entity\UserStat
      */
     public function getUserStat()
     {
@@ -407,20 +405,20 @@ class User extends BaseUser
     /**
      * Set reputation
      *
-     * @param integer $reputation
+     * @param  integer $reputation
      * @return User
      */
     public function setReputation($reputation)
     {
         $this->reputation = $reputation;
-    
+
         return $this;
     }
 
     /**
      * Get reputation
      *
-     * @return integer 
+     * @return integer
      */
     public function getReputation()
     {
@@ -430,13 +428,13 @@ class User extends BaseUser
     /**
      * Add pictures
      *
-     * @param \Dacorp\ExtraBundle\Entity\DacorpMedia $pictures
+     * @param  \Dacorp\ExtraBundle\Entity\DacorpMedia $pictures
      * @return User
      */
     public function addPicture(\Dacorp\ExtraBundle\Entity\DacorpMedia $pictures)
     {
         $this->pictures[] = $pictures;
-    
+
         return $this;
     }
 
@@ -453,7 +451,7 @@ class User extends BaseUser
     /**
      * Get pictures
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getPictures()
     {

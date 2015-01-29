@@ -36,7 +36,7 @@ class MenuBuilder extends ContainerAware
 
     /**
      * @param FactoryInterface $factory
-     * @param Container $container
+     * @param Container        $container
      */
     public function __construct(FactoryInterface $factory, Container $container)
     {
@@ -55,11 +55,12 @@ class MenuBuilder extends ContainerAware
         $mainMenu->setChildrenAttribute('class', 'nav navbar-nav');
         $mainMenu->addChild($this->translator->trans('navbar.mainlink.latest'), array(
             'route' => 'dacorp_picture_list',
-            'routeParameters' => array('listFilter' => 'latest', 'order' => 'DESC')));
+            'routeParameters' => array('listFilter' => 'latest', 'order' => 'DESC'), ));
         $mainMenu->addChild($this->translator->trans('navbar.mainlink.popular'), array(
             'route' => 'dacorp_picture_list',
-            'routeParameters' => array('listFilter' => 'nbVoteUp', 'order' => 'DESC')));
+            'routeParameters' => array('listFilter' => 'nbVoteUp', 'order' => 'DESC'), ));
         $mainMenu->addChild($this->translator->trans('navbar.upload-button'), array('route' => 'dacorp_picture_create'));
+
         return $mainMenu;
     }
 
@@ -75,7 +76,7 @@ class MenuBuilder extends ContainerAware
 
         $userMenuDropDown = $userMenu->addChild($label, array(
             'caret' => true,
-            'dropdown' => true
+            'dropdown' => true,
         ));
         $userMenuDropDown->addChild(
             $this->container->get('translator')->trans('navbar.member.menu.show_own_profile'), array('route' => 'show_own_profile')
@@ -93,14 +94,12 @@ class MenuBuilder extends ContainerAware
                 'label' => /** @Ignore */
                 '<span class="glyphicon glyphicon-log-out"></span>',
                 'extras' => array(
-                    'safe_label' => true
-                ))
+                    'safe_label' => true,
+                ), )
         );
 
         return $userMenu;
     }
-
-
 
     public function rightMenu(FactoryInterface $factory, array $options)
     {
@@ -121,30 +120,29 @@ class MenuBuilder extends ContainerAware
         $userMenuDropDown = $rightMenu->addChild($currLang, array(
             'caret' => true,
             'dropdown' => true,
-            'glyphicon' => 'glyphicon glyphicon-flag'
+            'glyphicon' => 'glyphicon glyphicon-flag',
         ));
         //create the childs
         foreach ($available_langs as $ilang) {
             if ($ilang != $currLang) {
                 $userMenuDropDown->addChild($ilang, array(
                     'route' => 'change_lang',
-                    'routeParameters' => array('newlang' => $ilang)));
+                    'routeParameters' => array('newlang' => $ilang), ));
             }
         }
 
         return $rightMenu;
     }
 
-
     /**
      *
      * get currland with something like $request->getSession()->get('_locale',$defaultLang)
-     * @param ItemInterface $menu
+     * @param  ItemInterface $menu
      * @param $currLang
      * @param $availableLangs
      * @return ItemInterface
      */
-    public function langMenu(ItemInterface $menu,$currLang,$availableLangs)
+    public function langMenu(ItemInterface $menu, $currLang, $availableLangs)
     {
 
         //Add a dropdown to switch languages
@@ -166,7 +164,7 @@ class MenuBuilder extends ContainerAware
                     'extras' => array(
                         'icon' => 'flag',
                     ),
-                    'routeParameters' => array('newlang' => $ilang)));
+                    'routeParameters' => array('newlang' => $ilang), ));
             }
         }
 

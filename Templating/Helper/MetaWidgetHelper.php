@@ -38,7 +38,6 @@ class MetaWidgetHelper extends Helper
         return $this->templating->render('DacorpExtraBundle:Widgets/Meta:facebookOpenGraph.html.twig', $parameters);
     }
 
-
     public function getName()
     {
         return 'metaWidget';

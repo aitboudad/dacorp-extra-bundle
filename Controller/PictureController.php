@@ -2,12 +2,10 @@
 
 namespace Dacorp\ExtraBundle\Controller;
 
-
 use Dacorp\ExtraBundle\Form\Type\DacorpMediaType;
 use Dacorp\ExtraBundle\Services\DacorpMediaManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class PictureController extends Controller
@@ -15,7 +13,7 @@ class PictureController extends Controller
 
     /**
      * Simple action for form Upload rendering
-     * @param Request $request
+     * @param  Request $request
      * @return array
      * @Template("DacorpExtraBundle:Form:pictureUploadForm.html.twig")
      */
@@ -38,8 +36,7 @@ class PictureController extends Controller
         return array(
             'pictureFormView' => $pictureForm->createView(),
             'pictureForm' => $pictureForm->createView(),
-            'smDatas' => $smDatas
+            'smDatas' => $smDatas,
         );
     }
-
 }

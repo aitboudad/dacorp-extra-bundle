@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Dacorp\ExtraBundle\Templating\Helper;
 
 use Symfony\Component\Config\FileLocator;
@@ -49,17 +48,16 @@ class AdHelper extends Helper
         $kernel = $this->container->get('kernel');
         $path = $kernel->locateResource('@DacorpExtraBundle/Resources/config/adsrepository.xml');
         $this->adsRepository->addXmlContent(file_get_contents($path));
-
     }
-
 
     public function getAdSense($parameters)
     {
-        //=
-        $render_parameters['size']=$parameters['size'];
-        $render_parameters['adContent']=htmlspecialchars_decode($this->adsRepository->filter('ad_'.$parameters['size'])->text());
-        $render_parameters['adContentBack']=$this->adsRepository->filter('ad_'.$parameters['size'].'_back')->text();
-        return $this->templating->render('DacorpExtraBundle:Widgets:adSense.html.twig', $render_parameters);
+        $renderParameters = array();
+        $renderParameters['size'] = $parameters['size'];
+        $renderParameters['adContent'] = htmlspecialchars_decode($this->adsRepository->filter('ad_'.$parameters['size'])->text());
+        $renderParameters['adContentBack'] = $this->adsRepository->filter('ad_'.$parameters['size'].'_back')->text();
+
+        return $this->templating->render('DacorpExtraBundle:Widgets:adSense.html.twig', $renderParameters);
     }
 
     public function getName()

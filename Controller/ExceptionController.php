@@ -12,8 +12,6 @@
 namespace Dacorp\ExtraBundle\Controller;
 
 use Symfony\Bundle\TwigBundle\Controller\ExceptionController as BaseExceptionController;
-use Symfony\Bundle\FrameworkBundle\Templating\TemplateReference;
-
 use Symfony\Component\HttpKernel\Exception\FlattenException;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,10 +21,8 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @author jmeyo Jean-Christophe Meillaud
  */
-
 class ExceptionController extends BaseExceptionController
 {
-
 
     /**
      * Converts an Exception to a Response.
@@ -40,10 +36,9 @@ class ExceptionController extends BaseExceptionController
      *
      * @throws \InvalidArgumentException When the exception template does not exist
      */
-
-    public function showAction(Request $request, FlattenException $exception, DebugLoggerInterface $logger = null, $_format = 'html')
+    public function showAction(Request $request, FlattenException $exception, DebugLoggerInterface $logger = null, $format = 'html')
     {
-        $request->setRequestFormat($_format);
+        $request->setRequestFormat($format);
 
         $currentContent = $this->getAndCleanOutputBuffering($request->headers->get('X-Php-Ob-Level', -1));
 
@@ -60,5 +55,4 @@ class ExceptionController extends BaseExceptionController
             )
         ));
     }
-
 }

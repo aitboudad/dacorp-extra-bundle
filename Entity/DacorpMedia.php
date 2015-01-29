@@ -10,10 +10,8 @@
 
 namespace Dacorp\ExtraBundle\Entity;
 
-use Dacorp\ExtraBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
 
 /**
  * Dacorp\ExtraBundle\Entity\DacorpMedia
@@ -35,7 +33,6 @@ class DacorpMedia
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $mediaId;
-
 
     /**
      * @var User $user
@@ -64,7 +61,6 @@ class DacorpMedia
      */
     private $url;
 
-
     public function __toString()
     {
         return'<br/>mediaId:'.$this->getMediaId().',filename:'.$this->filename.',url:'.$this->url.',user:'.$this->getUser();
@@ -73,7 +69,7 @@ class DacorpMedia
     /**
      * Get media
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -83,20 +79,20 @@ class DacorpMedia
     /**
      * Set filename
      *
-     * @param string $filename
+     * @param  string      $filename
      * @return DacorpMedia
      */
     public function setFilename($filename)
     {
         $this->filename = $filename;
-    
+
         return $this;
     }
 
     /**
      * Get filename
      *
-     * @return string 
+     * @return string
      */
     public function getFilename()
     {
@@ -106,20 +102,20 @@ class DacorpMedia
     /**
      * Set url
      *
-     * @param string $url
+     * @param  string      $url
      * @return DacorpMedia
      */
     public function setUrl($url)
     {
         $this->url = $url;
-    
+
         return $this;
     }
 
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
@@ -129,20 +125,20 @@ class DacorpMedia
     /**
      * Set user
      *
-     * @param \Dacorp\ExtraBundle\Entity\User $user
+     * @param  \Dacorp\ExtraBundle\Entity\User $user
      * @return DacorpMedia
      */
     public function setUser(\Dacorp\ExtraBundle\Entity\User $user = null)
     {
         $this->user = $user;
-    
+
         return $this;
     }
 
     /**
      * Get user
      *
-     * @return \Dacorp\ExtraBundle\Entity\User 
+     * @return \Dacorp\ExtraBundle\Entity\User
      */
     public function getUser()
     {
@@ -152,20 +148,20 @@ class DacorpMedia
     /**
      * Set originalFilename
      *
-     * @param string $originalFilename
+     * @param  string      $originalFilename
      * @return DacorpMedia
      */
     public function setOriginalFilename($originalFilename)
     {
         $this->originalFilename = $originalFilename;
-    
+
         return $this;
     }
 
     /**
      * Get originalFilename
      *
-     * @return string 
+     * @return string
      */
     public function getOriginalFilename()
     {

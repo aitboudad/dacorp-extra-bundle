@@ -50,7 +50,7 @@ abstract class DataFixture extends AbstractFixture implements ContainerAwareInte
     public function __construct()
     {
         $this->faker = FakerFactory::create();
-        $this->consoleOutput=new ConsoleOutput();
+        $this->consoleOutput = new ConsoleOutput();
     }
 
     /**
@@ -64,7 +64,7 @@ abstract class DataFixture extends AbstractFixture implements ContainerAwareInte
         if (in_array($kernel->getEnvironment(), $this->getEnvironments())) {
             $this->doLoad($manager);
         } else {
-            $this->consoleOutput->writeln("  <comment>>> Not loading " . get_class($this).' for environment '. $kernel->getEnvironment() ."</comment>");
+            $this->consoleOutput->writeln("  <comment>>> Not loading ".get_class($this).' for environment '.$kernel->getEnvironment()."</comment>");
         }
     }
 
@@ -75,7 +75,6 @@ abstract class DataFixture extends AbstractFixture implements ContainerAwareInte
     {
         $this->container = $container;
     }
-
 
     /**
      * Performs the actual fixtures loading.
@@ -92,5 +91,4 @@ abstract class DataFixture extends AbstractFixture implements ContainerAwareInte
      * @return array The name of the environments.
      */
     abstract protected function getEnvironments();
-
 }

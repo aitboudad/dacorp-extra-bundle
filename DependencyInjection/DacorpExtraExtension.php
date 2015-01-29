@@ -34,13 +34,12 @@ class DacorpExtraExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         if (isset($config['dacorp_media_class'])) {
-            $container->setParameter('dacorp_extra.dacorp_media_class',$config['dacorp_media_class']);
+            $container->setParameter('dacorp_extra.dacorp_media_class', $config['dacorp_media_class']);
         }
         $container->setParameter('dacorp_extra.social_networks', $config['social_networks']);
 
         $loader->load('services.yml');
         $loader->load('services_forms.yml');
         $loader->load('services_manager.yml');
-
     }
 }

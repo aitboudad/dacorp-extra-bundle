@@ -10,9 +10,8 @@
 
 namespace Dacorp\ExtraBundle;
 
-
-final class DacorpExtraEvents {
+final class DacorpExtraEvents
+{
 
     const AUTHENTICATED_USER_CHANGE_LANG = 'dacorp.user.change_lang';
-
 }

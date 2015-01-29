@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Dacorp\ExtraBundle\Services;
 
 //use FOS\UserBundle\Model\UserManager as UM
@@ -33,7 +32,7 @@ class UserManager extends BaseUserManager
 
         $userStat = new UserStat();
         $user->setUserStat($userStat);
+
         return $user;
     }
-
 }

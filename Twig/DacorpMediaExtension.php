@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Dacorp\ExtraBundle\Twig;
 
 use Twig_Extension;
@@ -21,13 +20,13 @@ class DacorpMediaExtension extends Twig_Extension
 
     /**
      * Logger
-     * @var type 
+     * @var type
      */
     protected $logger;
 
     /**
      * Container
-     * @var type 
+     * @var type
      */
     private $container;
 
@@ -47,34 +46,33 @@ class DacorpMediaExtension extends Twig_Extension
 
     public function mediaFilter($mediaKey, $filename, $size = 'thumbnails')
     {
-
         $format = trim(strtolower(substr($filename, strrpos($filename, '.') + 1)));
         if ($size != 'originals') {
             switch ($format) {
                 case 'pdf':
                 case 'xls':
                 case 'doc':
-                    $pathFile = "/bundles/dacorpcore/images/default-attachments/" . $format . ".png";
+                    $pathFile = "/bundles/dacorpcore/images/default-attachments/".$format.".png";
                     break;
                 case 'png':
                 case 'jpg':
                 case 'jpeg':
                 case 'gif':
-                    $pathFile = '/uploads/attachments/' . $mediaKey . '/' . $size . '/' . $filename;
+                    $pathFile = '/uploads/attachments/'.$mediaKey.'/'.$size.'/'.$filename;
                     break;
                 default:
                     return 'html';
                     break;
             }
         } else {
-            $pathFile = '/uploads/attachments/' . $mediaKey . '/' . $size . '/' . $filename;
+            $pathFile = '/uploads/attachments/'.$mediaKey.'/'.$size.'/'.$filename;
         }
-        return $this->container->get('request')->getBasePath(). $pathFile;
+
+        return $this->container->get('request')->getBasePath().$pathFile;
     }
 
     public function getName()
     {
         return 'dacorpmedia_extension';
     }
-
 }

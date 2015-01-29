@@ -36,7 +36,7 @@ class LoginListener
 
     /**
      * Constructor
-     * 
+     *
      * @param SecurityContext $context
      * @param Doctrine        $doctrine
      */
@@ -50,11 +50,10 @@ class LoginListener
 
     /**
      * Save the schoolId and group Id's in the session during login
-     * 
+     *
      * @param Event $event
      */
     public function onSecurityInteractiveLogin(Event $event)
     {
     }
-
 }

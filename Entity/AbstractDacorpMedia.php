@@ -10,10 +10,8 @@
 
 namespace Dacorp\ExtraBundle\Entity;
 
-use Dacorp\ExtraBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
 
 /**
  * Dacorp\ExtraBundle\Entity\AbstractDacorpMedia
@@ -35,8 +33,6 @@ abstract class AbstractDacorpMedia
      */
     protected $mediaId;
 
-
-
     /**
      * @var string $filename
      *
@@ -57,7 +53,6 @@ abstract class AbstractDacorpMedia
      */
     protected $url;
 
-
     public function __toString()
     {
         return'<br/>mediaId:'.$this->getMediaId().',filename:'.$this->filename.',url:'.$this->url;
@@ -66,7 +61,7 @@ abstract class AbstractDacorpMedia
     /**
      * Get media
      *
-     * @return integer 
+     * @return integer
      */
     public function getMediaId()
     {
@@ -76,20 +71,20 @@ abstract class AbstractDacorpMedia
     /**
      * Set filename
      *
-     * @param string $filename
+     * @param  string      $filename
      * @return DacorpMedia
      */
     public function setFilename($filename)
     {
         $this->filename = $filename;
-    
+
         return $this;
     }
 
     /**
      * Get filename
      *
-     * @return string 
+     * @return string
      */
     public function getFilename()
     {
@@ -99,20 +94,20 @@ abstract class AbstractDacorpMedia
     /**
      * Set url
      *
-     * @param string $url
+     * @param  string      $url
      * @return DacorpMedia
      */
     public function setUrl($url)
     {
         $this->url = $url;
-    
+
         return $this;
     }
 
     /**
      * Get url
      *
-     * @return string 
+     * @return string
      */
     public function getUrl()
     {
@@ -122,20 +117,20 @@ abstract class AbstractDacorpMedia
     /**
      * Set originalFilename
      *
-     * @param string $originalFilename
+     * @param  string      $originalFilename
      * @return DacorpMedia
      */
     public function setOriginalFilename($originalFilename)
     {
         $this->originalFilename = $originalFilename;
-    
+
         return $this;
     }
 
     /**
      * Get originalFilename
      *
-     * @return string 
+     * @return string
      */
     public function getOriginalFilename()
     {

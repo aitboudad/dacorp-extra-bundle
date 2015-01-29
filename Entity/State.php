@@ -51,8 +51,6 @@ class State
      */
     protected $code;
 
-
-
     /**
      * Get stateId
      *

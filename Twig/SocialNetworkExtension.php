@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Dacorp\ExtraBundle\Twig;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -53,12 +52,9 @@ class SocialNetworkExtension extends \Twig_Extension
     public function getSocialLinks($parameters = array())
     {
         foreach ($this->activeSocialNetworks as $snk => $snv) {
-            $parameters['socialNetworks'][$snk] = $this->socialNetworkUrl[$snk] .$snv;
+            $parameters['socialNetworks'][$snk] = $this->socialNetworkUrl[$snk].$snv;
         }
 
         return $this->container->get('templating')->render('DacorpExtraBundle:Widgets/SocialNetwork:socialLinks.html.twig', $parameters);
-
     }
 }
-
-?>

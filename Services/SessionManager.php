@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Dacorp\ExtraBundle\Services;
 
 use Symfony\Component\DependencyInjection\Container;
@@ -43,5 +42,4 @@ class SessionManager
         $this->session = $session;
         $this->container = $container;
     }
-
 }

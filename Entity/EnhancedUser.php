@@ -12,10 +12,6 @@ namespace Dacorp\ExtraBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Doctrine\Common\Collections\ArrayCollection;
-use Dacorp\ExtraBundle\Entity\DacorpMedia;
-
 
 class EnhancedUser extends BaseUser
 {
@@ -33,7 +29,6 @@ class EnhancedUser extends BaseUser
         // your own logic
     }
 
-
     /**
      * @var string $firstname
      *
@@ -48,14 +43,12 @@ class EnhancedUser extends BaseUser
      */
     protected $birthdate;
 
-
     /**
      * @var string $lastname
      *
      * @ORM\Column(name="lastname", type="string", length=20, nullable=true)
      */
     protected $lastname;
-
 
     /**
      * @var DacorpMedia $currentAvatar
@@ -83,7 +76,7 @@ class EnhancedUser extends BaseUser
     /**
      * Set firstname
      *
-     * @param string $firstname
+     * @param  string $firstname
      * @return User
      */
     public function setFirstname($firstname)
@@ -106,7 +99,7 @@ class EnhancedUser extends BaseUser
     /**
      * Set birthdate
      *
-     * @param \DateTime $birthdate
+     * @param  \DateTime $birthdate
      * @return User
      */
     public function setBirthdate($birthdate)
@@ -129,7 +122,7 @@ class EnhancedUser extends BaseUser
     /**
      * Set lastname
      *
-     * @param string $lastname
+     * @param  string $lastname
      * @return User
      */
     public function setLastname($lastname)
@@ -152,7 +145,7 @@ class EnhancedUser extends BaseUser
     /**
      * Set currentAvatar
      *
-     * @param \Dacorp\ExtraBundle\Entity\DacorpMedia $currentAvatar
+     * @param  \Dacorp\ExtraBundle\Entity\DacorpMedia $currentAvatar
      * @return User
      */
     public function setCurrentAvatar(\Dacorp\ExtraBundle\Entity\DacorpMedia $currentAvatar = null)
@@ -175,7 +168,7 @@ class EnhancedUser extends BaseUser
     /**
      * Set locale
      *
-     * @param \DateTime $locale
+     * @param  \DateTime $locale
      * @return User
      */
     public function setLocale($locale)

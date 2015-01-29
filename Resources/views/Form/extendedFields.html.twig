@@ -4,7 +4,7 @@
         {{ form_widget(form) }}
         <div class="file-uploader"></div>
 {% endblock %}
-        
+
 {% block form_example_widget %}
     {% spaceless %}
         {% if expanded %}
@@ -22,11 +22,11 @@
         {% endif %}
     {% endspaceless %}
 {% endblock %}
-        
-        
+
+
 {% block typehead_widget %}
 {% spaceless %}
-    <input type="text" {{ block('widget_attributes') }} 
+    <input type="text" {{ block('widget_attributes') }}
         {% if value is not empty %}value="{{ value }}" {% endif %} placeholder="{{ placeholder }}"
         data-provide="typeahead" data-items="{{ items }}" data-source="{{ source }}" />
 {% endspaceless %}

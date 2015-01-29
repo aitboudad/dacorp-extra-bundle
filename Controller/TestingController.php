@@ -29,10 +29,9 @@ class TestingController extends Controller
 
         return $this->render('DacorpExtraBundle:Testing:test.html.twig', array(
                 'tagform' => $tagform->createView(),
-                'picture' => $picture
+                'picture' => $picture,
 
             )
         );
     }
-
 }

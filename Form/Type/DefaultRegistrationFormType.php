@@ -13,7 +13,6 @@ namespace Dacorp\ExtraBundle\Form\Type;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use FOS\UserBundle\Form\Type\RegistrationFormType as BaseType;
-use Doctrine\ORM\EntityRepository;
 
 class DefaultRegistrationFormType extends BaseType
 {
@@ -33,5 +32,4 @@ class DefaultRegistrationFormType extends BaseType
     {
         return 'user_registration_form';
     }
-
 }

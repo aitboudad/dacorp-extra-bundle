@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Dacorp\ExtraBundle\Twig;
 
 class MetaExtension extends \Twig_Extension
@@ -46,7 +45,6 @@ class MetaExtension extends \Twig_Extension
 
             );
 
-
         return $this->container->get('dacorp.metaWidgetHelper')->allMetas($parameters);
     }
 
@@ -63,9 +61,6 @@ class MetaExtension extends \Twig_Extension
 
             );
 
-
         return $this->container->get('dacorp.metaWidgetHelper')->twitterCard($parameters);
     }
-
-
 }

@@ -6,8 +6,6 @@ namespace Dacorp\ExtraBundle\Services;
  * Slightly updated FileUploader based on https://github.com/punkave/symfony2-file-uploader-bundle
  */
 
-use Symfony\Component\HttpFoundation\JsonResponse;
-
 class FileUploader
 {
     protected $options;
@@ -18,7 +16,7 @@ class FileUploader
     }
 
     /**
-     * Get a list of files already present. The 'folder' option is required. 
+     * Get a list of files already present. The 'folder' option is required.
      * If you pass consistent options to this method and handleFileUpload with
      * regard to paths, then you will get consistent results.
      */
@@ -40,11 +38,11 @@ class FileUploader
     /**
      * Sync existing files from one folder to another. The 'fromFolder' and 'toFolder'
      * options are required. As with the 'folder' option elsewhere, these are appended
-     * to the file_base_path for you, missing parent folders are created, etc. If 
+     * to the file_base_path for you, missing parent folders are created, etc. If
      * 'fromFolder' does not exist no error is reported as this is common if no files
      * have been uploaded. If there are files and the sync reports errors an exception
      * is thrown.
-     * 
+     *
      * If you pass consistent options to this method and handleFileUpload with
      * regard to paths, then you will get consistent results.
      */
@@ -59,13 +57,13 @@ class FileUploader
      * example:
      *
      * $id = $this->getRequest()->get('id');
-     * // Validate the id, make sure it's just an integer, validate the user's right to edit that 
+     * // Validate the id, make sure it's just an integer, validate the user's right to edit that
      * // object, then...
      * $this->get('punkave.file_upload').handleFileUpload(array('folder' => 'photos/' . $id))
-     * 
+     *
      * DOES NOT RETURN. The response is generated in native PHP by BlueImp's UploadHandler class.
      *
-     * Note that if %file_uploader.file_path%/$folder already contains files, the user is 
+     * Note that if %file_uploader.file_path%/$folder already contains files, the user is
      * permitted to delete those in addition to uploading more. This is why we use a
      * separate folder for each object's associated files.
      *
@@ -76,8 +74,7 @@ class FileUploader
      */
     public function handleFileUpload($options = array())
     {
-        if (!isset($options['folder']))
-        {
+        if (!isset($options['folder'])) {
             throw new \Exception("You must pass the 'folder' option to distinguish this set of files from others");
         }
 
@@ -86,33 +83,31 @@ class FileUploader
         $allowedExtensions = $options['allowed_extensions'];
 
         // Build a regular expression like /(\.gif|\.jpg|\.jpeg|\.png)$/i
-        $allowedExtensionsRegex = '/(' . implode('|', array_map(function($extension) { return '\.' . $extension; }, $allowedExtensions)) . ')$/i';
+        $allowedExtensionsRegex = '/('.implode('|', array_map(function ($extension) { return '\.'.$extension; }, $allowedExtensions)).')$/i';
 
         $sizes = (isset($options['sizes']) && is_array($options['sizes'])) ? $options['sizes'] : array();
 
-        $filePath = $options['file_base_path'] . '/' . $options['folder'];
-        $webPath = $options['web_base_path'] . '/' . $options['folder'];
+        $filePath = $options['file_base_path'].'/'.$options['folder'];
+        $webPath = $options['web_base_path'].'/'.$options['folder'];
 
-        foreach ($sizes as &$size)
-        {
-            $size['upload_dir'] = $filePath . '/' . $size['folder'] . '/';
-            $size['upload_url'] = $webPath . '/' . $size['folder'] . '/';
+        foreach ($sizes as &$size) {
+            $size['upload_dir'] = $filePath.'/'.$size['folder'].'/';
+            $size['upload_url'] = $webPath.'/'.$size['folder'].'/';
         }
 
         $originals = $options['originals'];
 
-        $uploadDir = $filePath . '/' . $originals['folder'] . '/';
+        $uploadDir = $filePath.'/'.$originals['folder'].'/';
 
-        foreach ($sizes as &$size)
-        {
+        foreach ($sizes as &$size) {
             @mkdir($size['upload_dir'], 0777, true);
         }
 
         @mkdir($uploadDir, 0777, true);
         $upload_handler = new UploadHandler(
             array(
-                'upload_dir' => $uploadDir, 
-                'upload_url' => $webPath . '/' . $originals['folder'] . '/', 
+                'upload_dir' => $uploadDir,
+                'upload_url' => $webPath.'/'.$originals['folder'].'/',
                 'script_url' => $options['request']->getUri(),
                 'image_versions' => $sizes,
                 'accept_file_types' => $allowedExtensionsRegex,

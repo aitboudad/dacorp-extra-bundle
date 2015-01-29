@@ -11,12 +11,7 @@
 
 namespace Dacorp\ExtraBundle\Entity;
 
-use FOS\UserBundle\Entity\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Doctrine\Common\Collections\ArrayCollection;
-use Dacorp\ExtraBundle\Entity\DacorpMedia;
-
 /**
  * @ORM\Entity
  * @ORM\Table(name="dacore_user_stat")
@@ -33,14 +28,13 @@ class UserStat
      */
     protected $id;
 
-
     /**
      * Number of vote Up
      * @var integer $nbVoteUp
      *
      * @ORM\Column(name="user_nb_vote_up", type="smallint", nullable=true)
      */
-    private $nbVoteUp=0;
+    private $nbVoteUp = 0;
 
     /**
      * Number of vote Down
@@ -48,7 +42,7 @@ class UserStat
      *
      * @ORM\Column(name="user_nb_vote_down", type="smallint", nullable=true)
      */
-    private $nbVoteDown=0;
+    private $nbVoteDown = 0;
 
     /**
      * Number of Rating
@@ -56,8 +50,7 @@ class UserStat
      *
      * @ORM\Column(name="user_nb_rating", type="smallint", nullable=true)
      */
-    private $nbRating=1;
-
+    private $nbRating = 1;
 
     /**
      * Number of comments
@@ -65,8 +58,7 @@ class UserStat
      *
      * @ORM\Column(name="user_nb_comments", type="smallint", nullable=true)
      */
-    private $nbComments=0;
-
+    private $nbComments = 0;
 
     /**
      * Number of Pictures uploaded
@@ -74,12 +66,12 @@ class UserStat
      *
      * @ORM\Column(name="user_nb_pictures", type="smallint", nullable=true)
      */
-    private $nbPictures=0;
+    private $nbPictures = 0;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -89,20 +81,20 @@ class UserStat
     /**
      * Set nbVoteUp
      *
-     * @param integer $nbVoteUp
+     * @param  integer $nbVoteUp
      * @return User
      */
     public function setNbVoteUp($nbVoteUp)
     {
         $this->nbVoteUp = $nbVoteUp;
-    
+
         return $this;
     }
 
     /**
      * Get nbVoteUp
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbVoteUp()
     {
@@ -112,20 +104,20 @@ class UserStat
     /**
      * Set nbVoteDown
      *
-     * @param integer $nbVoteDown
+     * @param  integer $nbVoteDown
      * @return User
      */
     public function setNbVoteDown($nbVoteDown)
     {
         $this->nbVoteDown = $nbVoteDown;
-    
+
         return $this;
     }
 
     /**
      * Get nbVoteDown
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbVoteDown()
     {
@@ -135,20 +127,20 @@ class UserStat
     /**
      * Set nbRating
      *
-     * @param integer $nbRating
+     * @param  integer $nbRating
      * @return User
      */
     public function setNbRating($nbRating)
     {
         $this->nbRating = $nbRating;
-    
+
         return $this;
     }
 
     /**
      * Get nbRating
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbRating()
     {
@@ -156,59 +148,45 @@ class UserStat
     }
 
     /**
-     * Set nbComment
-     *
-     * @param integer $nbComment
-     * @return User
-     */
-    public function setNbComment($nbComment)
-    {
-        $this->nbComment = $nbComment;
-    
-        return $this;
-    }
-
-    /**
      * Set nbPictures
      *
-     * @param integer $nbPictures
+     * @param  integer $nbPictures
      * @return User
      */
     public function setNbPictures($nbPictures)
     {
         $this->nbPictures = $nbPictures;
-    
+
         return $this;
     }
 
     /**
      * Get nbPictures
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbPictures()
     {
         return $this->nbPictures;
     }
 
-
     /**
      * Set nbComments
      *
-     * @param integer $nbComments
+     * @param  integer  $nbComments
      * @return UserStat
      */
     public function setNbComments($nbComments)
     {
         $this->nbComments = $nbComments;
-    
+
         return $this;
     }
 
     /**
      * Get nbComments
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbComments()
     {

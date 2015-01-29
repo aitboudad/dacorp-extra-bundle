@@ -9,13 +9,11 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Dacorp\ExtraBundle\Services;
 
 use Doctrine\ORM\EntityManager;
 use Dacorp\ExtraBundle\Entity\Group;
 use Dacorp\ExtraBundle\Entity\User;
-use Dacorp\ExtraBundle\Services\AclManager;
 use Symfony\Component\Security\Acl\Domain\ObjectIdentity;
 use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
 use Symfony\Component\Security\Acl\Permission\MaskBuilder;
@@ -56,7 +54,6 @@ class DacorpAclService extends AclManager
         // retrieving the security identity of the currently logged-in user
         $securityIdentity = UserSecurityIdentity::fromAccount($user);
 
-
         // grant owner access
         $acl->insertObjectAce($securityIdentity, $this->getMask($mask));
         $this->aclManager->getAclProvider()->updateAcl($acl);
@@ -80,9 +77,10 @@ class DacorpAclService extends AclManager
         foreach ($maskArray as $mask) {
             $builder->add($mask);
         }
+
         return $builder->get();
     }
-    
+
     public function deleteAclForGroupPublication($domainObject, Group $group, User $user, $mask = array('view'))
     {
         $this->aclManager->revokePermission($domainObject, $this->getMask($mask), $user, 'object', false);

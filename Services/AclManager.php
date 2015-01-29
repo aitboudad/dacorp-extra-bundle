@@ -9,7 +9,6 @@
  * file that was distributed with this source code.
  */
 
-
 namespace Dacorp\ExtraBundle\Services;
 
 use Problematic\AclManagerBundle\Domain\AclManager as ProblematicAclManager;
@@ -25,5 +24,4 @@ class AclManager extends ProblematicAclManager
             $this->addPermission($domainObject, $mask, $securityIdentity, 'object', false);
         }
     }
-
 }
