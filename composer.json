@@ -22,7 +22,7 @@
         "doctrine/doctrine-fixtures-bundle": "~2.2",
         "genemu/form-bundle": "~2.2",
         "punkave/symfony2-file-uploader-bundle": "1.0.*@dev",
-        "mopa/bootstrap-bundle": "~3.0",
+        "mopa/bootstrap-bundle": "~3.0@beta",
         "twbs/bootstrap": "~3.3",
         "knplabs/knp-paginator-bundle": "~2.4",
         "knplabs/knp-menu-bundle": "*",
@@ -59,10 +59,6 @@
         ]
     },
     "autoload": {
-        "psr-0": {
-            "Dacorp\\ExtraBundle": ""
-        }
-    },
-    "target-dir": "Dacorp/ExtraBundle",
-    "minimum-stability": "dev"
+        "psr-4": { "Dacorp\\ExtraBundle\\": "" }
+    }
 }
