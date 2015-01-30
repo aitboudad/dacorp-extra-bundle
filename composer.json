@@ -21,7 +21,6 @@
     "require": {
         "doctrine/doctrine-fixtures-bundle": "~2.2",
         "genemu/form-bundle": "~2.2",
-        "punkave/symfony2-file-uploader-bundle": "~1.0@dev",
         "mopa/bootstrap-bundle": "~3.0@beta",
         "twbs/bootstrap": "~3.3",
         "knplabs/knp-paginator-bundle": "~2.4",
@@ -42,7 +41,8 @@
         "willdurand/faker-bundle": "~1.2"
     },
     "suggest": {
-        "problematic/acl-manager-bundle": "For using the AclManager"
+        "problematic/acl-manager-bundle": "",
+        "punkave/symfony2-file-uploader-bundle": ""
     },
     "scripts": {
         "post-install-cmd": [

@@ -1,0 +1,12 @@
+parameters:
+    dacorp.acl_manager.class: Dacorp\ExtraBundle\Services\AclManager
+    dacorp.acl_service.class: Dacorp\ExtraBundle\Services\DacorpAclService
+
+services:
+    dacorp.service.acl:
+        class: %dacorp.acl_service.class%
+        arguments: ["@doctrine.orm.entity_manager","@dacorp.manager.acl","@security.context"]
+
+    dacorp.manager.acl:
+        class: %dacorp.acl_manager.class%
+        arguments: ["@security.acl.provider","@security.context","@security.acl.object_identity_retrieval_strategy", "@doctrine.orm.entity_manager","@security.context"]

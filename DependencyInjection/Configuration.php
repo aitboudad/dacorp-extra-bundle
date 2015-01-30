@@ -37,6 +37,13 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('social_networks')
                     ->prototype('scalar')->end()
                 ->end()
+                ->booleanNode('use_uploader')
+                    ->defaultValue(true)
+                ->end()
+                ->booleanNode('use_acl')
+                    ->defaultValue(true)
+                ->end()
+
             ->end();
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
